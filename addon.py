@@ -2,9 +2,7 @@
 import xbmc
 import xbmcaddon
 
-addon = xbmcaddon.Addon(id='script.StartNetflix')
-addondir = xbmc.translatePath(addon.getAddonInfo('path'))
-
+addondir = xbmcaddon.Addon(id='script.StartNetflix').getAddonInfo('path')
 executable = addondir + "\\resources\\lib\\NetflixRemoteController.exe"
 
 if xbmc.Player().isPlaying():
@@ -13,3 +11,4 @@ if xbmc.Player().isPlaying():
 
 xbmc.log(msg=("Start " + executable), level=xbmc.LOGNOTICE)
 child = subprocess.call([executable, "smstextentry"])
+xbmc.log(msg=("Finished " + executable), level=xbmc.LOGNOTICE)
